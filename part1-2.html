@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>인터렉티브 테스트</title>
+    <link rel="stylesheet" type="text/css" href="./css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="./css/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>interactive practice</h1>
+      <ul class="gnb">
+        <li><a href="./index.html">파트1</a></li>
+        <li><a href="./part1-2.html">파트1-2</a></li>
+      </ul>
+    </header>
+
+    <section class="wrapper">
+      <article class="part2">
+        <h3 class="text">SEA & ME</h3>
+        <img class="model" src="./images//model.png" alt="model" />
+        <img class="bg" src="./images/part2_Bg.jpg" alt="" />
+      </article>
+
+      <script>
+        const model = document.querySelector(".model");
+        const bg = document.querySelector(".bg");
+        const text = document.querySelector(".text");
+
+        const speed = 0.0009;
+        let mx = 0;
+        let my = 0;
+        let x = 0;
+        let y = 0;
+
+        window.onload = function () {
+          window.addEventListener("mousemove", on3dTransfom);
+
+          function on3dTransfom(event) {
+            const { clientX, clientY } = event;
+            x = clientX - window.innerWidth / 2;
+            y = clientY - window.innerHeight / 2;
+          }
+          loop();
+        };
+
+        function loop() {
+          mx += (x - mx) * speed;
+          my += (y - my) * speed;
+
+          bg.style.transform = `translate3d(${-mx / 10}px,${
+            -my / 10
+          }px,0) rotate3d(${mx / 6},${my / 6},0,10deg) scale3d(3,3,1)`;
+
+          model.style.transform = `translate3d(${mx / 6}px,${
+            my / 6
+          }px,0) rotate3d(${mx / 10},${my / 10},0,10deg) translate(-50%,-50%)`;
+
+          text.style.transform = `translate(-50%,-50%) translate3d(${
+            -mx / 6
+          }px,${-my / 6}px,0) rotate3d(${-mx * 0.01},${-my * 0.01},0,25deg) `;
+
+          window.requestAnimationFrame(loop);
+        }
+      </script>
+    </section>
+  </body>
+</html>
