@@ -5,3 +5,30 @@ header {
   justify-content: space-between;
   background-color: #ddd;
 }
+
+.wrapper {
+  padding: 1rem;
+}
+
+.contents {
+  width: 100%;
+  height: 600px;
+  background-color: #f0f0f0;
+  position: relative;
+  cursor: none;
+  overflow: hidden;
+  margin: 1rem 0;
+}
+
+.cursor {
+  mix-blend-mode: multiply;
+  width: 2rem;
+  height: 2rem;
+  background-color: aquamarine;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 0.2s ease;
+  margin: -1rem 0 0 -1rem;
+}

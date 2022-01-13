@@ -9,11 +9,30 @@
     <link rel="stylesheet" type="text/css" href="./css/style.css" />
   </head>
   <body>
-    <header>
-      <h1>page 1</h1>
-      <ul class="gnb">
-        <li><a href="./pages/test.html">page 1</a></li>
-      </ul>
-    </header>
+    <h1></h1>
+    <section class="wrapper">
+      <article class="part1">
+        <h2>마우스를 활용한 인터랙티브</h2>
+        <p class="xyResults"></p>
+        <div class="contents">
+          <div class="cursor"></div>
+        </div>
+      </article>
+
+      <script>
+        const results = document.querySelector(".xyResults");
+        const cursor = document.querySelector(".cursor");
+
+        window.onload = function () {
+          window.addEventListener("mousemove", mouseEventFunc);
+        };
+
+        function mouseEventFunc(event) {
+          const { clientX, clientY } = event;
+          results.innerText = `x : ${clientX}, y : ${clientY}`;
+          cursor.style.transform = `translate(${clientX}px, ${clientY}px)`;
+        }
+      </script>
+    </section>
   </body>
 </html>
